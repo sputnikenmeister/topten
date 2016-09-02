@@ -1,0 +1,261 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Top Reason #04: Analytics</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<style type="text/css" media="screen">
+/* few defaults */
+body {
+	color: #333; font: normal 10pt/12pt 'Lucida Grande', Verdana, sans-serif;
+	text-align: left; margin: 0; padding: 0; overflow: auto; background-color: #e1e1e1;
+}
+a { text-decoration: none; }
+a:link,a:visited { color: #22a; }
+a:hover,a:active { color: #22e; }
+object:focus { outline: none; }
+
+/* page layout */
+html, body, #page { height: 100%; width: 100%; margin: 0; padding: 0; }
+
+#cmd, #flash-alt, #error, .error #cmd, #FpoApp.ready #cmd { display: none; }
+.ready #cmd, .ready #flash-alt, .error #error { display: block; }
+
+#flash-alt { background-color: #ffffff; }
+#error { color: #990000; }
+#cmd, #error { 
+	background: rgba(224,224,224,1.0);
+	margin: 0; padding: 10px; border-top: 1px solid #808080;
+	position: fixed; width: 100%; bottom: 0;
+	-webkit-box-sizing: border-box; 
+	   -moz-box-sizing: border-box;
+	        box-sizing: border-box;
+}
+#cmd > select { margin-right: 10px; }
+/* #cmd > a, #cmd > a:link, #cmd > a:visited { */
+/* 	color: #000;  */
+/* } */
+/* #cmd > a { */
+/* 	display: inline-block;  */
+/* 	font-size: 10px; font-weight: bold; */
+/* 	padding: 0 5px; margin: 0 4px; border: 1px solid #808080; background: #FFF; */
+/* 	-webkit-border-radius: 2px; -moz-border-radius: 2px; border-radius: 2px; */
+/* } */
+
+#close, .popup #pause, .paused #pause,
+#resume, .paused.popup #resume, .popup #resume,
+.popup #copyright, .popup #sources { display: none; }
+.popup #close, .paused #resume { display: inline-block; }
+
+/*.show-fitted { width: 100%; height: 100%; }*/
+/*.show-all { width: 1920px; height: 1080px; }*/
+.notice { font-size: 8pt; text-transform: uppercase; display: block; margin: -4px 4px 2px; }
+#next-display { font-size: 8pt; margin: -4px 4px 2px; }
+</style>
+
+<script type="text/javascript" src="jquery.min.js"></script>
+<script type="text/javascript" src="swfobject.js"></script>
+<script type="text/javascript">
+<!-- 
+var swfNames = [
+    "ReasonApp10",
+    "ReasonApp09",
+    "ReasonApp08",
+    "ReasonApp07",
+    "ReasonApp06",
+    "ReasonApp05",
+    "ReasonApp04",
+    "ReasonApp03",
+    "ReasonApp02",
+    "ReasonApp01"
+];
+var currSwf = "ReasonApp04";
+/* Fpo flag */
+var isFpo = "ReasonApp04" == "FpoApp";
+/* serialized json */
+var rawData = null;
+/* data store */
+var objData = null;
+
+/* called from flash */
+function getData() {
+	return rawData;
+}
+
+function displayError(name, message) {
+	$('body').addClass('error');
+	$('#error').innerHtml('<strong>' + name + '</strong> ' + message);
+}
+var swfWidth = 1920*0.5+1, swfHeight = 1080*0.5+1;
+//var swfWidth = "100%", swfHeight = "100%";
+
+/* swfobject */
+function swfobject_embedSwf(){
+	// swfobject.embedSWF params
+	var flvars = {};
+	var params = { swLiveConnect:"true", quality: "autolow", bgColor:"#ffffff", allowScriptAccess:"sameDomain",
+			allowFullScreen:"true", wmode: "direct"};
+	var attrs = { id: "ReasonApp04", name: "ReasonApp04" };
+	swfobject.embedSWF("ReasonApp04.swf", "flash-alt", swfWidth, swfHeight, "11.1.0",
+			"playerProductInstall.swf", flvars, params, attrs, swfobject_completeHandler);
+}
+/* swfobject callback */
+function swfobject_completeHandler(status) {
+	$('body').addClass('ready');
+ 	if (!status.success) {
+		return null; 
+	}
+	var swfref = status.ref;
+	
+	// Countdown
+	var nextSwfIdx = swfNames.indexOf(currSwf)-1;
+	var nextSwfDelayMs = 30000;
+	var nextSwfIntervalMs = 1000;
+	var nextSwfDisplay = $("#next-display");
+	var nextSwfCallbackId = null;
+	
+	var pauseNextSwf = function() {
+		if (nextSwfCallbackId) {
+			window.clearInterval(nextSwfCallbackId);
+			nextSwfCallbackId = null;
+		}
+	};
+	var resumeNextSwf = function() {
+		pauseNextSwf();
+		nextSwfCallbackId = window.setInterval(function() {
+			nextSwfDisplay.text((nextSwfDelayMs/1000) + "s");
+			nextSwfDelayMs -= nextSwfIntervalMs;
+			if (0 >= nextSwfDelayMs) {
+				window.location = swfNames[nextSwfIdx] + ".html";
+			}
+		}, nextSwfIntervalMs);
+	};
+	
+	if (swfNames[nextSwfIdx]) {
+		console.log("Will open next swf: ", swfNames[nextSwfIdx]);
+	} else {
+		nextSwfDisplay.text("-");
+		pauseNextSwf = resumeNextSwf = function(){void 0;};
+		console.log("This is the last swf");
+	}
+	resumeNextSwf();
+	
+	
+	// bind events
+	$('#resume').click(function() {
+		try { 
+			$('body').removeClass('paused');
+			resumeNextSwf();
+			swfref.resume();
+		} catch (e) { 
+			displayError(e.name, e.message);
+		}
+	});
+	$('#pause').click(function() {
+		try { 
+			$('body').addClass('paused');
+			pauseNextSwf();
+			swfref.pause();
+		} catch (e) { 
+			displayError(e.name, e.message);
+		}
+	});
+	$('#close').click(function() {
+		try { 
+			$('body').removeClass('popup paused');
+			resumeNextSwf();
+			swfref.hidePopUp();
+			swfref.resume();
+		} catch (e) { 
+			displayError(e.name, e.message);
+		}
+	});
+	$('#sources').click(function() {
+		try { 
+			$('body').addClass('popup paused');
+			pauseNextSwf();
+			swfref.pause();
+			swfref.setPopUpContent(objData.sources.header, objData.sources.body);
+			swfref.showPopUp();
+		} catch (e) { 
+			displayError(e.name, e.message);
+		}
+	});
+	$('#copyright').click(function() {
+		try {
+			$('body').addClass('popup paused');
+			pauseNextSwf();
+			swfref.pause();
+			swfref.setPopUpContent(objData.copyright.header, objData.copyright.body);
+			swfref.showPopUp();
+		} catch (e) { 
+			displayError(e.name, e.message);
+		}
+	});
+	//$('#toggle-size').click(function() {
+	//	$(swfref).toggleClass('show-all');
+	//});
+	
+}
+/* Get data file/populate dropdown */
+function jquery_loadData() {
+	$.ajax({
+		url: "ReasonApp04_data.js",
+		dataType: "json",
+		success: function (data, textStatus, request) {
+			objData = data;
+			try {
+				rawData = request.responseText;
+			} catch (e) {
+				rawData = null;
+				displayError(e.name, e.message);
+			}
+			swfobject_embedSwf();
+		},
+		error: function (request, textStatus, errorThrown) {
+			objData = rawData = null;
+			displayError(textStatus, errorThrown);
+		}
+	});
+	var swfOpt = null, swfSelect = $('#swfSelect');
+	for (var i=0; i < swfNames.length; i++) {
+		swfOpt = $(document.createElement('option'));
+		swfOpt.val(swfNames[i]).text( "Top Reason #" +
+				swfNames[i].replace(/[^0-9]+/g, "")
+				//swfNames[i].replace(/([a-z])(?=[A-Z0-9])/g, "$1 ")
+		);
+		swfSelect.prepend(swfOpt);
+	}
+	swfSelect.val(currSwf).change(function() {
+		window.location = $(this).val() + ".html";
+	});
+}
+$(document).ready(isFpo? swfobject_embedSwf: jquery_loadData);
+-->
+</script>
+</head>
+<body id="ReasonApp04">
+<div id="page">
+	<p id="error">
+		<strong>Error</strong>No error message available
+	</p>
+	<div id="cmd">
+		<strong class="notice">For demonstration purposes only</strong>
+		<select id="swfSelect"></select>
+<!-- 		<strong> JavaScript Commands &rarr;</strong> -->
+		<button id="resume">Resume</button>
+		<button id="pause">Pause</button>
+		<button id="sources">Sources</button>
+		<button id="copyright">Copyright</button>
+		<!--<button id="toggle-size">Change Size</button>-->
+		<button id="close">Close</button>
+		<span id="next-display"></span>
+	</div>
+	<div id="flash-alt">
+		<p>To view this page ensure that the Flash plug-in, version 11.1.0 or greater is installed.</p>
+		<p><a href='http://www.adobe.com/go/getflashplayer'>&rarr; Download Flash Player</a></p>
+	</div>
+</div>
+</body>
+</html>

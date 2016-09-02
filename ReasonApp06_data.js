@@ -1,0 +1,21 @@
+{
+    "header": "We deliver the &#x20C1;real&#x20D1; real-time enterprise through <br/>the most advanced in-memory technology.",
+    "leftText1": "<p fontSize=\"35\" fontWeight=\"bold\"><span>hours</span></p><p fontSize=\"21.4\" lineHeight=\"25\"><span>Before SAP HANA</span></p>",
+    "leftText3": "<p fontSize=\"35\" fontWeight=\"bold\"><span>seconds</span></p><p fontSize=\"21.4\" lineHeight=\"25\"><span>With SAP HANA</span></p>",
+    "leftText2": "Runs 3600x <br/> faster",
+    "leftText0": "<p fontSize=\"21.4\" lineHeight=\"25\" fontWeight=\"bold\"><span>SAP In-Memory Appliance Software (SAP HANA™)</span></p><p fontSize=\"18\"><span lineHeight=\"40\">SAP HANA is the engine of the real-time enterprise. HANA provides a </span><span lineHeight=\"25\">foundation on which to build a new generation of applications, enabling customers to analyze large quantities of data from virtually any source, in real time.</span></p><p fontSize=\"18\" lineHeight=\"25\"/>",
+    "rightBaseText": "<p fontSize=\"48\" lineHeight=\"50\" fontWeight=\"bold\" color=\"#00B2EF\"><span>0.04 seconds</span></p><p fontSize=\"21.4\" lineHeight=\"25\"><span>analysis response time</span></p><p fontSize=\"35\" fontWeight=\"bold\"><span>on any device,</span></p><p fontSize=\"35\" fontWeight=\"bold\"><span>anywhere, anytime</span></p>",
+    "rightText0": "<p fontSize=\"21.4\" lineHeight=\"25\" fontWeight=\"bold\"><span>Experience the real-time Enterprise in action</span></p><p fontSize=\"18\" lineHeight=\"40\"><span>A live analysis of a consumer products company data reveals how</span></p><p fontSize=\"18\" lineHeight=\"25\"><span>SAP HANA analyzes current point-of-sale data in real time—</span></p><p fontSize=\"18\" lineHeight=\"25\"><span>empowering this organization to review segmentation,</span></p><p fontSize=\"18\" lineHeight=\"25\"><span>merchandising, inventory management, and forecasting</span></p><p fontSize=\"18\" lineHeight=\"25\"><span>information at the speed of thought.</span></p>",
+    "rightValue1": "<p fontSize=\"58\" lineHeight=\"60\" fontWeight=\"bold\"><span>70</span></p><p fontSize=\"21.4\" lineHeight=\"25\"><span>retailers</span></p>",
+    "rightValue2": "<p fontSize=\"58\" lineHeight=\"60\" fontWeight=\"bold\"><span>460</span></p><p fontSize=\"21.4\" lineHeight=\"25\"><span>billion records</span></p>",
+    "rightValue3": "<p fontSize=\"58\" lineHeight=\"60\" fontWeight=\"bold\"><span>50</span></p><p fontSize=\"21.4\" lineHeight=\"25\"><span>terabytes of data</span></p>",
+    "sources": {
+        "header": "Sources",
+        "body": "Customer results may vary and will depend on system configuration. Left: Based on tests conducted by SAP with a construction industry customer’s data from SAP Business Suite transactions. On an average, queries ran 3600X faster than on SAP Business Suite with traditional disk based databases. Results achieved with SAP HANA 1.0 with one 4-way, 8 core server (2.27 GHz clock speed) with 0.5 TB of Main Memory, 2 TB of SSD storage, 1Gb Ethernet running on an open source operating system. Right: Based on tests conducted by SAP with 460 billion rows of point-of-sale data provided by a leading consumer products customer. Results achieved on a typical business query with SAP HANA 1.0 with 10 nodes. Each node consists of one 4-way, 8 core server (2.27 GHz clock speed) with 0.5 TB of Main Memory, 2 TB of SSD storage, 10Gb Ethernet running on an open source operating system."
+    },
+    "copyright":
+    {
+        "body": "<p><span>SAP and the SAP logo are registered trademarks of SAP AG in Germany and other countries. Business Objects and the Business Objects logo are trademarks or registered trademarks of Business Objects Software Ltd. Business Objects is an SAP company.</span></p><p><span>Sybase and the Sybase logo are registered trademarks of Sybase Inc. Sybase is an SAP company.</span></p><p><span>These materials are provided for information only and are subject to change without notice.</span></p>",
+        "header": "&#xA9; 2011 SAP AG. All rights reserved"
+    }
+}
